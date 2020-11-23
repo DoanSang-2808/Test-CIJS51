@@ -27,17 +27,17 @@ function Rank(array) {
         if(max.points < array[i].points){
             max = array[i]
             index = i
-        } else if ( max.points = array[i].points){
+        } else if ( max.points == array[i].points){
             if(max.GD > array[i].GD){
                 max = array[i]
                 index=i
             }
-            // else if( max.GD = array[i].GD){
-            //     if(max.name < array[i].name){
-            //         max = array[i];
-            //         index = i
-            //     }
-            // }
+            else if( max.GD == array[i].GD){
+                if(max.name > array[i].name){
+                    max = array[i];
+                    index = i
+                }
+            }
         }
 
    }
@@ -45,6 +45,15 @@ function Rank(array) {
 
 }
 function A2(array) {
+    let n = array.length;
+    let array_rank= []
+   for( let i = 0; i< n; i++){
+       let index = Rank(array)
+       array[index].position = i+1
+       array_rank.push(array[index])
+       array.splice(index, 1)
+   }
+   return array_rank;
    
 }
-console.log(Rank(array))
+console.log(A2(array))
